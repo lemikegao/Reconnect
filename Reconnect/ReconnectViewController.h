@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
+#import "LoginViewController.h"
 
-@interface ReconnectViewController : UIViewController
+@interface ReconnectViewController : UIViewController <FBSessionDelegate, FBRequestDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UILabel *greeting;
+@property (weak, nonatomic) IBOutlet UILabel *myLike;
+@property (weak, nonatomic) IBOutlet UILabel *friendLike;
+- (IBAction)logoutOfFacebook:(id)sender;
 
 @end

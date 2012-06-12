@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E5399221587A07400355DF3 /* LoginWithFacebookNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5399201587A07400355DF3 /* LoginWithFacebookNormal.png */; };
+		3E5399231587A07400355DF3 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */; };
+		3E5399291587A55F00355DF3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5399281587A55E00355DF3 /* LoginViewController.m */; };
 		3EB5FC40158790D7001B70E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC3F158790D7001B70E7 /* UIKit.framework */; };
 		3EB5FC42158790D7001B70E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC41158790D7001B70E7 /* Foundation.framework */; };
 		3EB5FC44158790D7001B70E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC43158790D7001B70E7 /* CoreGraphics.framework */; };
@@ -23,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E5399201587A07400355DF3 /* LoginWithFacebookNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal.png; sourceTree = "<group>"; };
+		3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
+		3E5399271587A55E00355DF3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3E5399281587A55E00355DF3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3EB5FC3B158790D7001B70E7 /* Reconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB5FC3F158790D7001B70E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3EB5FC41158790D7001B70E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,12 +62,22 @@
 				3EB5FC40158790D7001B70E7 /* UIKit.framework in Frameworks */,
 				3EB5FC42158790D7001B70E7 /* Foundation.framework in Frameworks */,
 				3EB5FC44158790D7001B70E7 /* CoreGraphics.framework in Frameworks */,
+				3EB5FCB91587981B001B70E7 /* libfacebook_ios_sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E53991E1587A06200355DF3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E5399201587A07400355DF3 /* LoginWithFacebookNormal.png */,
+				3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		3EB5FC30158790D7001B70E7 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +121,8 @@
 				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
 				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
+				3E53991E1587A06200355DF3 /* Resources */,
+				3EB5FC681587972D001B70E7 /* Libraries */,
 			);
 			path = Reconnect;
 			sourceTree = "<group>";
@@ -285,6 +304,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reconnect/Reconnect-Prefix.pch";
 				INFOPLIST_FILE = "Reconnect/Reconnect-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/facebook-ios-sdk\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,6 +319,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reconnect/Reconnect-Prefix.pch";
 				INFOPLIST_FILE = "Reconnect/Reconnect-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/facebook-ios-sdk\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
