@@ -30,7 +30,6 @@ NSString* const FB_APP_ID = @"159351717531143";
     }
     
     if (![self.facebook isSessionValid]) {
-//        [self.facebook authorize:nil];
         UIStoryboard *iphoneStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         LoginViewController *loginViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
         

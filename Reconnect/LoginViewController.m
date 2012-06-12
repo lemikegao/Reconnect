@@ -44,7 +44,7 @@
 #pragma mark - IBAction definitions
 
 - (IBAction)loginWithFacebook:(id)sender {
-    NSArray *permissions = [[NSArray alloc] initWithObjects:@"email", nil];
+    NSArray *permissions = [[NSArray alloc] initWithObjects:@"user_likes", @"friends_likes", nil];
     [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] authorize:permissions];
 }
 
