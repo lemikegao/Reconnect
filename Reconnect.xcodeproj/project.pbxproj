@@ -95,9 +95,9 @@
 		3EB5FC45158790D7001B70E7 /* Reconnect */ = {
 			isa = PBXGroup;
 			children = (
+				3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */,
 				3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */,
 				3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */,
-				3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */,
 				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
 				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
@@ -336,6 +336,7 @@
 				3EB5FC5B158790D7001B70E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
