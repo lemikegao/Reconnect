@@ -7,16 +7,37 @@
 //
 
 #import "ReconnectNavigationController.h"
+#import <QuartzCore/CALayer.h>
 
 @implementation ReconnectNavigationController
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 { 
-    // try to do this manually instead of w photo
-//    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"header"] forBarMetrics:UIBarMetricsDefault];
+    // try to do this manually instead of with photo
+    //    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"header"] forBarMetrics:UIBarMetricsDefault];
+    
+    CGRect titleFrame = CGRectMake(0, 0, 320, 32);
+    UILabel *label = [[UILabel alloc] initWithFrame:titleFrame];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment = UITextAlignmentCenter;
+    label.font = [UIFont fontWithName:@"Futura-Medium" size:24.0f];
+    label.text = @"SIMILAR FRIENDS";
+    [self.navigationBar addSubview:label];
+    
+    CGRect subtitleFrame = CGRectMake(0,29,320,12);
+    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleLabel.backgroundColor = [UIColor clearColor];
+    subtitleLabel.textAlignment = UITextAlignmentCenter;
+    subtitleLabel.font = [UIFont fontWithName:@"Futura-Medium" size:12.0f];
+    subtitleLabel.textColor = [UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.0f];
+    subtitleLabel.text = @"LAST 30 DAYS";
+    [self.navigationBar addSubview:subtitleLabel];
     
     [self.navigationBar setTintColor:[UIColor colorWithRed:1.0f green:0.97f blue:0.73f alpha:0]];
-    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, [UIFont fontWithName:@"Futura-Medium-Italic" size:5.0f], UITextAttributeFont, nil]];
+    self.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.navigationBar.layer.shadowRadius = 3.0f;
+    self.navigationBar.layer.shadowOpacity = 1.0f; 
     
     return [super initWithRootViewController:rootViewController];
 
@@ -46,7 +67,10 @@
     [self.navigationBar addSubview:subtitleLabel];
     
     [self.navigationBar setTintColor:[UIColor colorWithRed:1.0f green:0.97f blue:0.73f alpha:0]];
-    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, [UIFont fontWithName:@"Futura-Medium-Italic" size:5.0f], UITextAttributeFont, nil]];
+    self.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.navigationBar.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
+    self.navigationBar.layer.shadowRadius = 10.0f;
+    self.navigationBar.layer.shadowOpacity = 1.0f; 
 }
 
 @end
