@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
+#import "LoginViewController.h"
 
-@interface ReconnectViewController : UIViewController
+@interface ReconnectViewController : UIViewController <FBSessionDelegate>
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ReconnectAppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -38,6 +39,13 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - IBAction definitions
+
+- (IBAction)loginWithFacebook:(id)sender {
+    NSArray *permissions = [[NSArray alloc] initWithObjects:@"email", nil];
+    [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] authorize:permissions];
 }
 
 @end

@@ -7,15 +7,49 @@
 //
 
 #import "ReconnectAppDelegate.h"
+#import "ReconnectViewController.h"
+#import "LoginViewController.h"
 
 @implementation ReconnectAppDelegate
 
+NSString* const FB_APP_ID = @"159351717531143";
+
 @synthesize window = _window;
+@synthesize facebook = _facebook;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    ReconnectViewController *rootViewController = (ReconnectViewController *)self.window.rootViewController;
+    self.facebook = [[Facebook alloc] initWithAppId:FB_APP_ID andDelegate:rootViewController];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if (![self.facebook isSessionValid]) {
+//        [self.facebook authorize:nil];
+        UIStoryboard *iphoneStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        LoginViewController *loginViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self.window makeKeyAndVisible];    // making window visible so loginViewController is pushed modally
+        [rootViewController presentViewController:loginViewController animated:NO completion:nil];
+    }
+    
     return YES;
+}
+
+// Pre iOS 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.facebook handleOpenURL:url]; 
+}
+
+// For iOS 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self.facebook handleOpenURL:url]; 
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -37,7 +71,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self.facebook extendAccessTokenIfNeeded];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
