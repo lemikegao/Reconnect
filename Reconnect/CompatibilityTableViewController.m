@@ -71,7 +71,7 @@
 
     cell.imageView.image = profilePic;
     cell.imageView.layer.cornerRadius = 8.0;
-    cell.imageView.layer.masksToBounds = YES;    
+    cell.imageView.layer.masksToBounds = YES;
     cell.nameLabel.text = @"Kimberly Hsiao";
     cell.similaritiesLabel.text = @"hiasdfasdfasdfaf, MOULIN ROUGE, GOOD WILL HUNTING, ZOOLANDER, HIMYM, FRIENDS";
     
@@ -85,7 +85,7 @@
 
 - (void)tableView: (UITableView*)tableView willDisplayCell: (UITableViewCell*)cell forRowAtIndexPath: (NSIndexPath*)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed: 0.9 green: 0.9 blue: 0.9 alpha: 1.0];
+    cell.backgroundColor = [UIColor colorWithRed: 0.95f green: 0.95f blue: 0.95f alpha: 1.0f];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 }

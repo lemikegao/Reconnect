@@ -35,12 +35,12 @@
                                       COMPATIBILITYPICHEIGHT);
     
     self.nameLabel.frame = CGRectMake(COMPATIBILITYPICWIDTH + 2*COMPATIBILITYPICMARGIN,
-                                      COMPATIBILITYPICMARGIN/2,
+                                      COMPATIBILITYPICMARGIN,
                                       COMPATIBILITYTEXTWIDTH,
                                       self.nameLabel.frame.size.height);
     
     self.similaritiesLabel.frame = CGRectMake(COMPATIBILITYPICWIDTH + 2*COMPATIBILITYPICMARGIN,
-                                            5*COMPATIBILITYPICMARGIN,
+                                            3*COMPATIBILITYPICMARGIN,
                                             COMPATIBILITYTEXTWIDTH,
                                             self.similaritiesLabel.frame.size.height);
     
