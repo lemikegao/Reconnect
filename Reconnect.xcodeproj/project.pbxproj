@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3EB5FC40158790D7001B70E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC3F158790D7001B70E7 /* UIKit.framework */; };
+		3EB5FC42158790D7001B70E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC41158790D7001B70E7 /* Foundation.framework */; };
+		3EB5FC44158790D7001B70E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FC43158790D7001B70E7 /* CoreGraphics.framework */; };
+		3EB5FC4A158790D7001B70E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FC48158790D7001B70E7 /* InfoPlist.strings */; };
+		3EB5FC4C158790D7001B70E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC4B158790D7001B70E7 /* main.m */; };
+		3EB5FC50158790D7001B70E7 /* ReconnectAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */; };
+		3EB5FC53158790D7001B70E7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */; };
+		3EB5FC56158790D7001B70E7 /* ReconnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3EB5FC3B158790D7001B70E7 /* Reconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EB5FC3F158790D7001B70E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3EB5FC41158790D7001B70E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3EB5FC43158790D7001B70E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */ = {isa = PBXFileReference; path = "Reconnect-Info.plist"; sourceTree = "<group>"; };
+		3EB5FC49158790D7001B70E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3EB5FC4B158790D7001B70E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3EB5FC4D158790D7001B70E7 /* Reconnect-Prefix.pch */ = {isa = PBXFileReference; path = "Reconnect-Prefix.pch"; sourceTree = "<group>"; };
+		3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */ = {isa = PBXFileReference; path = ReconnectAppDelegate.h; sourceTree = "<group>"; };
+		3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectAppDelegate.m; sourceTree = "<group>"; };
+		3EB5FC52158790D7001B70E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */ = {isa = PBXFileReference; path = ReconnectViewController.h; sourceTree = "<group>"; };
+		3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EB5FC38158790D7001B70E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EB5FC40158790D7001B70E7 /* UIKit.framework in Frameworks */,
+				3EB5FC42158790D7001B70E7 /* Foundation.framework in Frameworks */,
+				3EB5FC44158790D7001B70E7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EB5FC30158790D7001B70E7 = {
+			isa = PBXGroup;
+			children = (
+				3EB5FC45158790D7001B70E7 /* Reconnect */,
+				3EB5FC3E158790D7001B70E7 /* Frameworks */,
+				3EB5FC3C158790D7001B70E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3EB5FC3C158790D7001B70E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3EB5FC3B158790D7001B70E7 /* Reconnect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3EB5FC3E158790D7001B70E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EB5FC3F158790D7001B70E7 /* UIKit.framework */,
+				3EB5FC41158790D7001B70E7 /* Foundation.framework */,
+				3EB5FC43158790D7001B70E7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3EB5FC45158790D7001B70E7 /* Reconnect */ = {
+			isa = PBXGroup;
+			children = (
+				3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */,
+				3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */,
+				3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */,
+				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
+				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
+				3EB5FC46158790D7001B70E7 /* Supporting Files */,
+			);
+			path = Reconnect;
+			sourceTree = "<group>";
+		};
+		3EB5FC46158790D7001B70E7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */,
+				3EB5FC48158790D7001B70E7 /* InfoPlist.strings */,
+				3EB5FC4B158790D7001B70E7 /* main.m */,
+				3EB5FC4D158790D7001B70E7 /* Reconnect-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EB5FC3A158790D7001B70E7 /* Reconnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EB5FC59158790D7001B70E7 /* Build configuration list for PBXNativeTarget "Reconnect" */;
+			buildPhases = (
+				3EB5FC37158790D7001B70E7 /* Sources */,
+				3EB5FC38158790D7001B70E7 /* Frameworks */,
+				3EB5FC39158790D7001B70E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reconnect;
+			productName = Reconnect;
+			productReference = 3EB5FC3B158790D7001B70E7 /* Reconnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3EB5FC32158790D7001B70E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Reconnect;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Calimucho;
+			};
+			buildConfigurationList = 3EB5FC35158790D7001B70E7 /* Build configuration list for PBXProject "Reconnect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3EB5FC30158790D7001B70E7;
+			productRefGroup = 3EB5FC3C158790D7001B70E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EB5FC3A158790D7001B70E7 /* Reconnect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EB5FC39158790D7001B70E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EB5FC4A158790D7001B70E7 /* InfoPlist.strings in Resources */,
+				3EB5FC53158790D7001B70E7 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3EB5FC37158790D7001B70E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EB5FC4C158790D7001B70E7 /* main.m in Sources */,
+				3EB5FC50158790D7001B70E7 /* ReconnectAppDelegate.m in Sources */,
+				3EB5FC56158790D7001B70E7 /* ReconnectViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3EB5FC48158790D7001B70E7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EB5FC49158790D7001B70E7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EB5FC52158790D7001B70E7 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3EB5FC57158790D7001B70E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3EB5FC58158790D7001B70E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EB5FC5A158790D7001B70E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reconnect/Reconnect-Prefix.pch";
+				INFOPLIST_FILE = "Reconnect/Reconnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3EB5FC5B158790D7001B70E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reconnect/Reconnect-Prefix.pch";
+				INFOPLIST_FILE = "Reconnect/Reconnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EB5FC35158790D7001B70E7 /* Build configuration list for PBXProject "Reconnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EB5FC57158790D7001B70E7 /* Debug */,
+				3EB5FC58158790D7001B70E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3EB5FC59158790D7001B70E7 /* Build configuration list for PBXNativeTarget "Reconnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EB5FC5A158790D7001B70E7 /* Debug */,
+				3EB5FC5B158790D7001B70E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3EB5FC32158790D7001B70E7 /* Project object */;
+}
