@@ -108,7 +108,7 @@
 				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
 				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
-				3E2EBDAF15879E6D00C3FB9C /* Libraries */,
+				3EB5FC681587972D001B70E7 /* Libraries */,
 			);
 			path = Reconnect;
 			sourceTree = "<group>";
