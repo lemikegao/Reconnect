@@ -22,14 +22,14 @@
 		3EB5FC3F158790D7001B70E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3EB5FC41158790D7001B70E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3EB5FC43158790D7001B70E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */ = {isa = PBXFileReference; path = "Reconnect-Info.plist"; sourceTree = "<group>"; };
+		3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Reconnect-Info.plist"; sourceTree = "<group>"; };
 		3EB5FC49158790D7001B70E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3EB5FC4B158790D7001B70E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3EB5FC4D158790D7001B70E7 /* Reconnect-Prefix.pch */ = {isa = PBXFileReference; path = "Reconnect-Prefix.pch"; sourceTree = "<group>"; };
-		3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */ = {isa = PBXFileReference; path = ReconnectAppDelegate.h; sourceTree = "<group>"; };
+		3EB5FC4D158790D7001B70E7 /* Reconnect-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Reconnect-Prefix.pch"; sourceTree = "<group>"; };
+		3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReconnectAppDelegate.h; sourceTree = "<group>"; };
 		3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectAppDelegate.m; sourceTree = "<group>"; };
 		3EB5FC52158790D7001B70E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */ = {isa = PBXFileReference; path = ReconnectViewController.h; sourceTree = "<group>"; };
+		3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReconnectViewController.h; sourceTree = "<group>"; };
 		3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
