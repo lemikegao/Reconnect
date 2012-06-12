@@ -47,6 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2EBDAF15879E6D00C3FB9C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		3EB5FC30158790D7001B70E7 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +90,7 @@
 				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
 				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
+				3E2EBDAF15879E6D00C3FB9C /* Libraries */,
 			);
 			path = Reconnect;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				3EB5FC5B158790D7001B70E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
