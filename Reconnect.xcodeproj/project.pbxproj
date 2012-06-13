@@ -38,6 +38,8 @@
 		3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
 		3E5399271587A55E00355DF3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3E5399281587A55E00355DF3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3E96FC1C1588D20800BCE928 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		3E96FC1D1588D20800BCE928 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3EB5FC3B158790D7001B70E7 /* Reconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB5FC3F158790D7001B70E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3EB5FC41158790D7001B70E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -170,6 +172,8 @@
 			children = (
 				F90E498A1587AAE8003C4D29 /* Constants.h */,
 				F90E498B1587AB74003C4D29 /* Constants.m */,
+				3E96FC1C1588D20800BCE928 /* MBProgressHUD.h */,
+				3E96FC1D1588D20800BCE928 /* MBProgressHUD.m */,
 				3EB5FC4B158790D7001B70E7 /* main.m */,
 				3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */,
 				3EB5FC48158790D7001B70E7 /* InfoPlist.strings */,
