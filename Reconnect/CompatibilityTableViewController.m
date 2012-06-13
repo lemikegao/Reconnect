@@ -13,6 +13,7 @@
 #import "RFacebookLike.h"
 #import "RFriend.h"
 #import "ReconnectAppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface CompatibilityTableViewController ()
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
 @property (nonatomic, strong) NSMutableDictionary *pageIdToName;
 @property BOOL doneProcessing;
+@property float highestCompatScore;
 
 @end
 
@@ -34,6 +36,7 @@
 @synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
 @synthesize pageIdToName = _pageIdToName;
 @synthesize doneProcessing = _doneProcessing;
+@synthesize highestCompatScore = _highestCompatScore;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -71,6 +74,12 @@
     }
     
     return _mySortedFriendsAndScores;
+}
+
+- (void)setMySortedFriendsAndScores:(NSArray *)mySortedFriendsAndScores {
+    _mySortedFriendsAndScores = mySortedFriendsAndScores;
+    [self.tableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (NSMutableDictionary*)pageIdToName {
@@ -213,11 +222,11 @@
             return (first < second);
         }];
         
-        self.mySortedFriendsAndScores = sortedArray;
         self.doneProcessing = YES;
-        [self.tableView reloadData];
+        self.highestCompatScore = [[sortedArray objectAtIndex:0] compatScore];
+        self.mySortedFriendsAndScores = sortedArray;
         NSLog(@"%@", sortedArray);
-        NSLog(@"%@", result);
+//        NSLog(@"%@", result);
     }
 }
 
@@ -238,7 +247,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-        
+
     // get me
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
@@ -262,6 +271,10 @@
 {
     [super viewDidLoad];
 
+    // start spinner
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -322,7 +335,7 @@
         commonLikes = [commonLikes substringWithRange:NSMakeRange(2,[commonLikes length]-2)];
         cell.similaritiesLabel.text = commonLikes;
         
-        cell.compatibilityPercent.text = [NSString stringWithFormat:@"%.f", friend.compatScore*100];
+        cell.compatibilityPercent.text = [NSString stringWithFormat:@"%.f", (friend.compatScore/(self.highestCompatScore * 1.3))*100];
         cell.percentSign.text = @"%";
     }
     

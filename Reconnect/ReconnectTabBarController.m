@@ -8,6 +8,7 @@
 
 #import "ReconnectTabBarController.h"
 #import "ReconnectAppDelegate.h"
+#import "LoginViewController.h"
 
 @interface ReconnectTabBarController ()
 
@@ -42,6 +43,17 @@
 - (void)fbDidLogout {
     // clear NSUserDefaults
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
+    
+    LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [self presentViewController:loginViewController animated:NO completion:nil];
+    
+    // release existing view controllers and create new instances for next user who logs in
+    UIViewController* compatibilityNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"compatibilityNavigationController"];
+    UIViewController* statusUpdateNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"statusUpdateNavigationController"];
+    UIViewController* topPicksNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"topPicksNavigationController"];
+    NSArray* newTabViewControllers = [NSArray arrayWithObjects:compatibilityNavigationController, statusUpdateNavigationController, topPicksNavigationController, nil];
+    self.viewControllers = newTabViewControllers;
+    self.selectedIndex = 0;
     
     NSLog(@"logged out");
 }
