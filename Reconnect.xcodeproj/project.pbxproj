@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E06008D1588492C00AB43C8 /* RFacebookLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06008C1588492C00AB43C8 /* RFacebookLike.m */; };
+		3E0600901588590B00AB43C8 /* RFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06008F1588590B00AB43C8 /* RFriend.m */; };
 		3E5399221587A07400355DF3 /* LoginWithFacebookNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5399201587A07400355DF3 /* LoginWithFacebookNormal.png */; };
 		3E5399231587A07400355DF3 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */; };
 		3E5399291587A55F00355DF3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5399281587A55E00355DF3 /* LoginViewController.m */; };
@@ -27,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E06008B1588492C00AB43C8 /* RFacebookLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFacebookLike.h; sourceTree = "<group>"; };
+		3E06008C1588492C00AB43C8 /* RFacebookLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFacebookLike.m; sourceTree = "<group>"; };
+		3E06008E1588590B00AB43C8 /* RFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFriend.h; sourceTree = "<group>"; };
+		3E06008F1588590B00AB43C8 /* RFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFriend.m; sourceTree = "<group>"; };
 		3E5399201587A07400355DF3 /* LoginWithFacebookNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal.png; sourceTree = "<group>"; };
 		3E5399211587A07400355DF3 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
 		3E5399271587A55E00355DF3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -84,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E06008A158848EB00AB43C8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3E06008B1588492C00AB43C8 /* RFacebookLike.h */,
+				3E06008C1588492C00AB43C8 /* RFacebookLike.m */,
+				3E06008E1588590B00AB43C8 /* RFriend.h */,
+				3E06008F1588590B00AB43C8 /* RFriend.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		3E53991E1587A06200355DF3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +152,7 @@
 				F90E498E1587AC31003C4D29 /* CompatibilityTableViewController.m */,
 				3E5399271587A55E00355DF3 /* LoginViewController.h */,
 				3E5399281587A55E00355DF3 /* LoginViewController.m */,
+				3E06008A158848EB00AB43C8 /* Classes */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
 				3E53991E1587A06200355DF3 /* Resources */,
 				3EB5FC681587972D001B70E7 /* Libraries */,
@@ -269,6 +287,8 @@
 				F90E498F1587AC31003C4D29 /* CompatibilityTableViewController.m in Sources */,
 				3E5399291587A55F00355DF3 /* LoginViewController.m in Sources */,
 				F9C167A015882F8600FBAAFC /* ReconnectTabBarController.m in Sources */,
+				3E06008D1588492C00AB43C8 /* RFacebookLike.m in Sources */,
+				3E0600901588590B00AB43C8 /* RFriend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
