@@ -102,22 +102,27 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSLog(@"reconnect view controller did appear");
+        
+    // get me
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
     
-//    [facebook requestWithGraphPath:@"me/likes" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
-    NSString *myLikesURL = @"fql?q=SELECT page_id, name, type FROM page WHERE page_id IN (SELECT page_id FROM page_fan WHERE type in ('MUSICIAN/BAND') and uid =me())";
-    NSString *myLikesRequest = [myLikesURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-    [facebook requestWithGraphPath:myLikesRequest andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
+    // get my likes
+    NSString *myLikes = @"SELECT page_id, name, type FROM page WHERE page_id IN (SELECT page_id FROM page_fan WHERE type in ('MUSICIAN/BAND','MOVIE','TV SHOW','TV CHANNEL','TV NETWORK','BOOK') and uid =me())";
+    NSMutableDictionary *myLikesParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:myLikes,@"query",@"myLikesRequest",@"requestType",nil];
+    [facebook requestWithMethodName:@"fql.query" andParams:myLikesParams andHttpMethod:@"POST" andDelegate:self];
     
-    //    [facebook requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
+    // get pageIDs of my friends likes
     NSString *myFriends = @"SELECT uid2 from friend where uid1 = me()";
-    NSString *myFriendsPages = @"SELECT uid, page_id FROM page_fan WHERE type in ('MUSICIAN/BAND') and uid in (select uid2 from #myFriendsQuery)";
+    NSString *myFriendsPages = @"SELECT uid, page_id, type FROM page_fan WHERE type in ('MUSICIAN/BAND','MOVIE','TV SHOW','TV CHANNEL','TV NETWORK','BOOK') and uid in (select uid2 from #myFriendsQuery)";
     NSString *fqlStatement = [NSString stringWithFormat:@"{\"myFriendsQuery\":\"%@\",\"myFriendsPagesQuery\":\"%@\"}",myFriends,myFriendsPages];
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:fqlStatement forKey:@"queries"];
     [facebook requestWithMethodName:@"fql.multiquery" andParams:params andHttpMethod:@"POST" andDelegate:self];
+    
+    // get names of common likes -- get first 3
+    NSString *commonLikesNames = @"SELECT name FROM page where page_id in ('10705539669','93944052260','6483988719','10510685798')";
+    NSMutableDictionary *commonLikesNamesParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:commonLikesNames, @"query",@"commonLikesNamesRequest",@"requestType", nil];
+    [facebook requestWithMethodName:@"fql.query" andParams:commonLikesNamesParams andHttpMethod:@"POST" andDelegate:self];
     
 }
 
