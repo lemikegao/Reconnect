@@ -16,6 +16,7 @@
 @property (nonatomic, strong) FBRequest *friendsLikesRequest;
 @property (nonatomic, strong) FBRequest *myFriendsRequest;
 @property (nonatomic, strong) NSMutableDictionary *myFriends;
+@property (nonatomic, strong) NSMutableDictionary *myLikes;
 
 @end
 
@@ -26,6 +27,10 @@
 @synthesize friendsLikesRequest = _friendsLikesRequest;
 @synthesize myFriendsRequest = _myFriendsRequest;
 @synthesize myFriends = _myFriends;
+@synthesize myLikes = _myLikes;
+@synthesize greeting;
+@synthesize myLike = _myLike;
+@synthesize friendLike = _friendLike;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -36,10 +41,21 @@
     return _myFriends;
 }
 
+- (NSMutableDictionary*)myLikes {
+    if (!_myLikes) {
+        _myLikes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                                    [[NSMutableArray alloc] init], @"Music",        // Musician/band
+                                                    [[NSMutableArray alloc] init], @"MoviesAndTV",  // Movie, Tv show, Tv channel, Tv network
+                                                    [[NSMutableArray alloc] init], @"Books",        // Book
+                                                    nil];
+    }
+    
+    return _myLikes;
+}
+
+// Music, Movie & TV shows, Books, 
+
 #pragma mark - FBRequestDelegate Methods
-@synthesize greeting;
-@synthesize myLike = _myLike;
-@synthesize friendLike = _friendLike;
 
 - (void)request:(FBRequest *)request didLoad:(id)result { 
     NSString *requestType = [request.params objectForKey:@"requestType"];
@@ -50,6 +66,8 @@
     } else if ([requestType isEqualToString:@"myLikesRequest"]) {
         NSLog(@"did load my likes request");
         self.myLike.text = [NSString stringWithFormat:@"You like %@", [[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"name"]];
+        NSArray *data = [result objectForKey:@"data"];
+        
 //        NSLog(@"%@", result);
     } else if ([requestType isEqualToString:@"myFriendsRequest"]) {
         // loop through all results and store in myFriends dictionary
