@@ -21,6 +21,7 @@
 		3EB5FC53158790D7001B70E7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */; };
 		3EB5FCB81587981B001B70E7 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FCAB1587981B001B70E7 /* FBDialog.bundle */; };
 		3EB5FCB91587981B001B70E7 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FCB11587981B001B70E7 /* libfacebook_ios_sdk.a */; };
+		3EC0DB41158890F300E064FE /* StatusUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0DB40158890F300E064FE /* StatusUpdateViewController.m */; };
 		F90E498315879E9E003C4D29 /* CompatibilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E498215879E9E003C4D29 /* CompatibilityCell.m */; };
 		F90E49891587A12B003C4D29 /* ReconnectNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E49881587A12B003C4D29 /* ReconnectNavigationController.m */; };
 		F90E498C1587AB74003C4D29 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E498B1587AB74003C4D29 /* Constants.m */; };
@@ -63,6 +64,8 @@
 		3EB5FCB51587981B001B70E7 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		3EB5FCB61587981B001B70E7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		3EB5FCB71587981B001B70E7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		3EC0DB3F158890F300E064FE /* StatusUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusUpdateViewController.h; sourceTree = "<group>"; };
+		3EC0DB40158890F300E064FE /* StatusUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusUpdateViewController.m; sourceTree = "<group>"; };
 		F90E498115879E9E003C4D29 /* CompatibilityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompatibilityCell.h; path = Reconnect/CompatibilityCell.h; sourceTree = "<group>"; };
 		F90E498215879E9E003C4D29 /* CompatibilityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompatibilityCell.m; path = Reconnect/CompatibilityCell.m; sourceTree = "<group>"; };
 		F90E49871587A12B003C4D29 /* ReconnectNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconnectNavigationController.h; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				F90E49881587A12B003C4D29 /* ReconnectNavigationController.m */,
 				F90E498D1587AC31003C4D29 /* CompatibilityTableViewController.h */,
 				F90E498E1587AC31003C4D29 /* CompatibilityTableViewController.m */,
+				3EC0DB3F158890F300E064FE /* StatusUpdateViewController.h */,
+				3EC0DB40158890F300E064FE /* StatusUpdateViewController.m */,
 				3E5399271587A55E00355DF3 /* LoginViewController.h */,
 				3E5399281587A55E00355DF3 /* LoginViewController.m */,
 				3E06008A158848EB00AB43C8 /* Classes */,
@@ -289,6 +294,7 @@
 				F9C167A015882F8600FBAAFC /* ReconnectTabBarController.m in Sources */,
 				3E06008D1588492C00AB43C8 /* RFacebookLike.m in Sources */,
 				3E0600901588590B00AB43C8 /* RFriend.m in Sources */,
+				3EC0DB41158890F300E064FE /* StatusUpdateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
