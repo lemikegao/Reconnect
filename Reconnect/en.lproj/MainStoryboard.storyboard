@@ -153,11 +153,11 @@
             </objects>
             <point key="canvasLocation" x="199" y="774"/>
         </scene>
-        <!--Reconnect Tab Controller View Controller-->
+        <!--Reconnect Tab Bar Controller-->
         <scene sceneID="VUc-dH-4Xr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZF-Na-izz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="VSH-Y4-Qh5" customClass="ReconnectTabControllerViewController" sceneMemberID="viewController">
+                <tabBarController id="VSH-Y4-Qh5" customClass="ReconnectTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FYh-uy-VcK">
@@ -231,15 +231,6 @@
         </class>
         <class className="ReconnectNavigationController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ReconnectNavigationController.h"/>
-        </class>
-        <class className="ReconnectTabControllerViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReconnectTabControllerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logoutOfFacebook:"/>
-                <relationship kind="outlet" name="friendLike" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="greeting" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="myLike" candidateClass="UILabel"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

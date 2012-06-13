@@ -1,5 +1,5 @@
 //
-//  CompatibilityTableViewController.h
+//  ReconnectTabControllerViewController.h
 //  Reconnect
 //
 //  Created by Kimberly Hsiao on 6/12/12.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
+#import "LoginViewController.h"
 
-@interface CompatibilityTableViewController : UITableViewController <FBRequestDelegate>
+@interface ReconnectTabBarController : UITabBarController <FBSessionDelegate>
 
 @end
