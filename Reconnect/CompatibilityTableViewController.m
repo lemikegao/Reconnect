@@ -104,8 +104,6 @@
             }
         }
         
-        NSLog(@"%@", self.pageIdToName);
-        
 //        NSLog(@"%@", self.myLikes);
         
     } else if ([requestType isEqualToString:@"myFriendsRequest"]) {
