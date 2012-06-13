@@ -23,4 +23,11 @@
     return descriptionString;
 }
 
+- (NSMutableSet*)commonLikes {
+    if (!_commonLikes) {
+        _commonLikes = [[NSMutableSet alloc] init];
+    }
+    return _commonLikes;
+}
+
 @end

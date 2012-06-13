@@ -13,5 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel* nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* similaritiesLabel;
 @property (nonatomic, weak) IBOutlet UILabel* compatibilityPercent;
+@property (nonatomic, weak) IBOutlet UILabel* percentSign;
 
 @end

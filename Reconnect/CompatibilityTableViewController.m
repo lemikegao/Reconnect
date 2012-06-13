@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *myFriendsAndScores;
 @property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
 @property (nonatomic, strong) NSMutableDictionary *pageIdToName;
+@property BOOL doneProcessing;
 
 @end
 
@@ -32,6 +33,7 @@
 @synthesize myFriendsAndScores = _myFriendsAndScores;
 @synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
 @synthesize pageIdToName = _pageIdToName;
+@synthesize doneProcessing = _doneProcessing;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -180,6 +182,7 @@
         
         for (NSString* friendID in [result allKeys]) {
             RFriend *currentFriend = [[RFriend alloc] init];
+            currentFriend.friendID = friendID;
             currentFriend.name = [self.myFriends objectForKey:friendID];
             currentFriend.compatScore = 0.0f;
             currentFriend.totalLikes = 0;
@@ -193,6 +196,7 @@
                     if ([self.myLikes containsObject:[friendLike objectForKey:@"id"]]) {
                         // same like!
                         currentFriend.sameLikes++;
+                        [currentFriend.commonLikes addObject:[friendLike objectForKey:@"id"]];
                     }
                 }
             }
@@ -209,9 +213,11 @@
             return (first < second);
         }];
         
-//        NSLog(@"%@", sortedArray);
-        
-//        NSLog(@"%@", result);
+        self.mySortedFriendsAndScores = sortedArray;
+        self.doneProcessing = YES;
+        [self.tableView reloadData];
+        NSLog(@"%@", sortedArray);
+        NSLog(@"%@", result);
     }
 }
 
@@ -232,8 +238,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSLog(@"reconnect view controller did appear");
+        
+    // get me
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
     
@@ -292,14 +298,33 @@
     static NSString *CellIdentifier = @"CompatibilityCell";
     CompatibilityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString* profilePicURL = @"http://graph.facebook.com/kimhsiao/picture";
-    UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+    if (self.doneProcessing) {
+        RFriend *friend = [self.mySortedFriendsAndScores objectAtIndex:indexPath.row];
+        
+        NSString* friendFBID = friend.friendID;
+        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
+        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
 
-    cell.imageView.image = profilePic;
-    cell.imageView.layer.cornerRadius = 8.0;
-    cell.imageView.layer.masksToBounds = YES;
-    cell.nameLabel.text = @"Kimberly Hsiao";
-    cell.similaritiesLabel.text = @"hiasdfasdfasdfaf, MOULIN ROUGE, GOOD WILL HUNTING, ZOOLANDER, HIMYM, FRIENDS";
+        cell.imageView.image = profilePic;
+        cell.imageView.layer.cornerRadius = 8.0;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.nameLabel.text = friend.name;
+        
+        NSString* commonLikes = @"";
+        int likeCounter = 0;
+        for (NSString* pageID in friend.commonLikes) {
+            if (likeCounter < 5) {
+                NSString* likeName = [self.pageIdToName objectForKey:pageID];
+                commonLikes = [NSString stringWithFormat:@"%@, %@",commonLikes,likeName];
+                likeCounter++;
+            }
+        }
+        commonLikes = [commonLikes substringWithRange:NSMakeRange(2,[commonLikes length]-2)];
+        cell.similaritiesLabel.text = commonLikes;
+        
+        cell.compatibilityPercent.text = [NSString stringWithFormat:@"%.f", friend.compatScore*100];
+        cell.percentSign.text = @"%";
+    }
     
     return cell;
 }

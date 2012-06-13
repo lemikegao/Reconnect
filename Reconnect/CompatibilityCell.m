@@ -14,6 +14,7 @@
 @synthesize nameLabel = _nameLabel;
 @synthesize similaritiesLabel = _similaritiesLabel;
 @synthesize compatibilityPercent = _compatibilityPercent;
+@synthesize percentSign = _percentSign;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
