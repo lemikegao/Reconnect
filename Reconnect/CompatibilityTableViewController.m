@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
 @property (nonatomic, strong) NSMutableDictionary *pageIdToName;
 @property BOOL doneProcessing;
+@property (nonatomic, strong) NSMutableDictionary *topFbPics;
 
 @end
 
@@ -34,6 +35,7 @@
 @synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
 @synthesize pageIdToName = _pageIdToName;
 @synthesize doneProcessing = _doneProcessing;
+@synthesize topFbPics = _topFbPics;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -79,6 +81,14 @@
     }
     
     return _pageIdToName;
+}
+
+- (NSMutableDictionary*)topFbPics {
+    if (!_topFbPics) {
+        _topFbPics = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _topFbPics;
 }
 
 #pragma mark - FBRequestDelegate Methods
@@ -129,6 +139,7 @@
                 [friendsIDs setString:@""];
             } else {
                 [friendsIDs appendFormat:@"%@,", [friend objectForKey:@"id"]];
+
             }
         }
         
@@ -137,6 +148,7 @@
             // if last character is a comma, remove it
             if ([[friendsIDs substringFromIndex:[friendsIDs length] - 1] isEqualToString:@","]) {
                 [friendsIDs setString:[friendsIDs substringToIndex:[friendsIDs length] -1]];
+                self.doneProcessing = YES;
             }
         }
         
@@ -214,8 +226,21 @@
         }];
         
         self.mySortedFriendsAndScores = sortedArray;
-        self.doneProcessing = YES;
-        [self.tableView reloadData];
+        
+        if (self.doneProcessing) {
+            int topFriendCounter = 0;
+            for (RFriend* topFriend in self.mySortedFriendsAndScores) {
+                if (topFriendCounter < 10) {
+                    // add picture to toppics
+                    NSLog(@"top friedn FBID is :%@",topFriend.friendID);
+                    [self.topFbPics setObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",topFriend.friendID]]] forKey:topFriend.friendID];
+                    topFriendCounter++;
+                }
+            }
+            NSLog(@"top friend pics is %@",self.topFbPics);
+            [self.tableView reloadData];
+        }
+        
         NSLog(@"%@", sortedArray);
         NSLog(@"%@", result);
     }
@@ -301,9 +326,10 @@
     if (self.doneProcessing) {
         RFriend *friend = [self.mySortedFriendsAndScores objectAtIndex:indexPath.row];
         
-        NSString* friendFBID = friend.friendID;
-        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
-        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+//        NSString* friendFBID = friend.friendID;
+//        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
+//        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+        UIImage *profilePic = [[UIImage alloc] initWithData:[self.topFbPics objectForKey:friend.friendID]];
 
         cell.imageView.image = profilePic;
         cell.imageView.layer.cornerRadius = 8.0;
