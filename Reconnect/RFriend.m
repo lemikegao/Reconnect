@@ -16,4 +16,10 @@
 @synthesize totalLikes = _totalLikes;
 @synthesize sameLikes = _sameLikes;
 
+- (NSString *)description {
+    NSString *descriptionString = [NSString stringWithFormat:@"name: %@; compatibility: %f", self.name, self.compatScore];
+    
+    return descriptionString;
+}
+
 @end

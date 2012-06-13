@@ -20,7 +20,7 @@
 //@property (nonatomic, strong) NSMutableDictionary *myLikes;
 @property (nonatomic, strong) NSMutableSet *myLikes;        // set of ids (of facebook pages)
 @property (nonatomic, strong) NSMutableArray *myFriendsAndScores;
-@property NSUInteger myLikesCount;
+@property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
 
 @end
 
@@ -29,7 +29,7 @@
 @synthesize myFriends = _myFriends;
 @synthesize myLikes = _myLikes;
 @synthesize myFriendsAndScores = _myFriendsAndScores;
-@synthesize myLikesCount = _myLikesCount;
+@synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -61,37 +61,46 @@
     return _myFriendsAndScores;
 }
 
+- (NSArray*)mySortedFriendsAndScores {
+    if (!_mySortedFriendsAndScores) {
+        _mySortedFriendsAndScores = [[NSArray alloc] init];
+    }
+}
+
 #pragma mark - FBRequestDelegate Methods
 
 - (void)request:(FBRequest *)request didLoad:(id)result { 
     NSString *requestType = [request.params objectForKey:@"requestType"];
     if ([requestType isEqualToString:@"meRequest"]) {
         NSLog(@"did load me request");
-        
+        [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
     } else if ([requestType isEqualToString:@"myLikesRequest"]) {
         NSLog(@"did load my likes request");
         NSArray *data = [result objectForKey:@"data"];
         for (NSDictionary *myLike in data) {
             NSString *currentCategory = [myLike objectForKey:@"category"];
-            if ([currentCategory isEqualToString:@"Musician/band"]) {
-                RFacebookLike *like = [[RFacebookLike alloc] init];
-                like.id = [myLike objectForKey:@"id"];
-                like.name = [myLike objectForKey:@"name"];
-                [[self.myLikes objectForKey:@"Music"] addObject:like];
-                self.myLikesCount++;
-            } else if ([currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || 
-                       [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"]) {
-                RFacebookLike *like = [[RFacebookLike alloc] init];
-                like.id = [myLike objectForKey:@"id"];
-                like.name = [myLike objectForKey:@"name"];
-                [[self.myLikes objectForKey:@"MoviesAndTv"] addObject:like];
-                self.myLikesCount++;
-            } else if ([currentCategory isEqualToString:@"Book"]) {
-                RFacebookLike *like = [[RFacebookLike alloc] init];
-                like.id = [myLike objectForKey:@"id"];
-                like.name = [myLike objectForKey:@"name"];
-                [[self.myLikes objectForKey:@"Books"] addObject:like];
-                self.myLikesCount++;
+//            if ([currentCategory isEqualToString:@"Musician/band"]) {
+//                RFacebookLike *like = [[RFacebookLike alloc] init];
+//                like.id = [myLike objectForKey:@"id"];
+//                like.name = [myLike objectForKey:@"name"];
+//                [[self.myLikes objectForKey:@"Music"] addObject:like];
+//                self.myLikesCount++;
+//            } else if ([currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || 
+//                       [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"]) {
+//                RFacebookLike *like = [[RFacebookLike alloc] init];
+//                like.id = [myLike objectForKey:@"id"];
+//                like.name = [myLike objectForKey:@"name"];
+//                [[self.myLikes objectForKey:@"MoviesAndTv"] addObject:like];
+//                self.myLikesCount++;
+//            } else if ([currentCategory isEqualToString:@"Book"]) {
+//                RFacebookLike *like = [[RFacebookLike alloc] init];
+//                like.id = [myLike objectForKey:@"id"];
+//                like.name = [myLike objectForKey:@"name"];
+//                [[self.myLikes objectForKey:@"Books"] addObject:like];
+//                self.myLikesCount++;
+//            }
+            if ([currentCategory isEqualToString:@"Musician/band"] || [currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"] || [currentCategory isEqualToString:@"Book"]) {
+                [self.myLikes addObject:[myLike objectForKey:@"id"]];
             }
         }
         
@@ -108,8 +117,8 @@
             friendCounter++;
             [self.myFriends setObject:[friend objectForKey:@"name"] forKey:[friend objectForKey:@"id"]];
             
-            if (friendCounter == 100) {
-                NSLog(@"retrieving 100 friends' likes");
+            if (friendCounter == 10) {
+                NSLog(@"retrieving 10 friends' likes");
                 [friendsIDs appendFormat:@"%@", [friend objectForKey:@"id"]];
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
 
@@ -135,31 +144,43 @@
         //        NSLog(@"friends: %@", self.myFriends);
     } else if ([requestType isEqualToString:@"myFriendsLikesRequest"]) {
         NSLog(@"did load friends likes request");
-        NSSet *myMusicLikes = [self.myLikes objectForKey:@"Music"];
-        NSSet *myMoviesAndTvLikes = [self.myLikes objectForKey:@"MoviesAndTv"];
-        NSSet *myBooksLikes = [self.myLikes objectForKey:@"Books"];
+//        NSSet *myMusicLikes = [self.myLikes objectForKey:@"Music"];
+//        NSSet *myMoviesAndTvLikes = [self.myLikes objectForKey:@"MoviesAndTv"];
+//        NSSet *myBooksLikes = [self.myLikes objectForKey:@"Books"];
         
         for (NSString* friendID in [result allKeys]) {
             RFriend *currentFriend = [[RFriend alloc] init];
-            currentFriend.name = [result objectForKey:friendID];
+            currentFriend.name = [self.myFriends objectForKey:friendID];
             currentFriend.compatScore = 0.0f;
             currentFriend.totalLikes = 0;
             currentFriend.sameLikes = 0;
             
-            NSArray *friendLikes = [[[result objectForKey:friendID] objectForKey:@"likes"] objectForKey:@"data"];
+            NSArray *friendLikes = [[result objectForKey:friendID] objectForKey:@"data"];
             for (NSDictionary *friendLike in friendLikes) {
                 NSString *currentCategory = [friendLike objectForKey:@"category"];
-                
-                if ([currentCategory isEqualToString:@"Musician/band"]) {
-                    
-                } else if ([currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || 
-                           [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"]) {
-                    
-                } else if ([currentCategory isEqualToString:@"Book"]) {
-                    
+                if ([currentCategory isEqualToString:@"Musician/band"] || [currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"] || [currentCategory isEqualToString:@"Book"]) {
+                    currentFriend.totalLikes++;
+                    if ([self.myLikes containsObject:[friendLike objectForKey:@"id"]]) {
+                        // same like!
+                        currentFriend.sameLikes++;
+                    }
                 }
             }
+            
+            currentFriend.compatScore = (currentFriend.sameLikes*2) / (float)(currentFriend.totalLikes + [self.myLikes count]);
+            [self.myFriendsAndScores addObject:currentFriend];
+//            NSLog(@"%@: %i, %i, %f", currentFriend.name, currentFriend.sameLikes, currentFriend.totalLikes, currentFriend.compatScore);
         }
+        
+        NSArray *sortedArray = [self.myFriendsAndScores sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            float first = [(RFriend*)a compatScore];
+            float second = [(RFriend*)b compatScore];
+            
+            return (first < second);
+        }];
+        
+        NSLog(@"%@", sortedArray);
+        
 //        NSLog(@"%@", result);
     }
 }
@@ -185,7 +206,6 @@
     NSLog(@"reconnect view controller did appear");
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
-    [facebook requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
     [facebook requestWithGraphPath:@"me/likes" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
 }
 
@@ -193,7 +213,6 @@
 {
     [super viewDidLoad];
 
-    self.myLikesCount = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
