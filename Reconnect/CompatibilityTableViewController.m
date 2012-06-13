@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableSet *myLikes;        // set of ids (of facebook pages)
 @property (nonatomic, strong) NSMutableArray *myFriendsAndScores;
 @property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
+@property (nonatomic, strong) NSMutableDictionary *pageIdToName;
 
 @end
 
@@ -30,6 +31,7 @@
 @synthesize myLikes = _myLikes;
 @synthesize myFriendsAndScores = _myFriendsAndScores;
 @synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
+@synthesize pageIdToName = _pageIdToName;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -65,44 +67,44 @@
     if (!_mySortedFriendsAndScores) {
         _mySortedFriendsAndScores = [[NSArray alloc] init];
     }
+    
+    return _mySortedFriendsAndScores;
+}
+
+- (NSMutableDictionary*)pageIdToName {
+    if (!_pageIdToName) {
+        _pageIdToName = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _pageIdToName;
 }
 
 #pragma mark - FBRequestDelegate Methods
 
 - (void)request:(FBRequest *)request didLoad:(id)result { 
     NSString *requestType = [request.params objectForKey:@"requestType"];
+    
     if ([requestType isEqualToString:@"meRequest"]) {
         NSLog(@"did load me request");
-        [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
+        
     } else if ([requestType isEqualToString:@"myLikesRequest"]) {
         NSLog(@"did load my likes request");
         NSArray *data = [result objectForKey:@"data"];
+        /* FQL
+        for (NSDictionary *pageID in data) {
+            [self.myLikes addObject:[pageID objectForKey:@"page_id"]];
+        }
+         */
         for (NSDictionary *myLike in data) {
             NSString *currentCategory = [myLike objectForKey:@"category"];
-//            if ([currentCategory isEqualToString:@"Musician/band"]) {
-//                RFacebookLike *like = [[RFacebookLike alloc] init];
-//                like.id = [myLike objectForKey:@"id"];
-//                like.name = [myLike objectForKey:@"name"];
-//                [[self.myLikes objectForKey:@"Music"] addObject:like];
-//                self.myLikesCount++;
-//            } else if ([currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || 
-//                       [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"]) {
-//                RFacebookLike *like = [[RFacebookLike alloc] init];
-//                like.id = [myLike objectForKey:@"id"];
-//                like.name = [myLike objectForKey:@"name"];
-//                [[self.myLikes objectForKey:@"MoviesAndTv"] addObject:like];
-//                self.myLikesCount++;
-//            } else if ([currentCategory isEqualToString:@"Book"]) {
-//                RFacebookLike *like = [[RFacebookLike alloc] init];
-//                like.id = [myLike objectForKey:@"id"];
-//                like.name = [myLike objectForKey:@"name"];
-//                [[self.myLikes objectForKey:@"Books"] addObject:like];
-//                self.myLikesCount++;
-//            }
+
             if ([currentCategory isEqualToString:@"Musician/band"] || [currentCategory isEqualToString:@"Movie"] || [currentCategory isEqualToString:@"Tv show"] || [currentCategory isEqualToString:@"Tv channel"] || [currentCategory isEqualToString:@"Tv network"] || [currentCategory isEqualToString:@"Book"]) {
+                [self.pageIdToName setObject:[myLike objectForKey:@"name"] forKey:[myLike objectForKey:@"id"]];
                 [self.myLikes addObject:[myLike objectForKey:@"id"]];
             }
         }
+        
+        NSLog(@"%@", self.pageIdToName);
         
 //        NSLog(@"%@", self.myLikes);
         
@@ -117,36 +119,66 @@
             friendCounter++;
             [self.myFriends setObject:[friend objectForKey:@"name"] forKey:[friend objectForKey:@"id"]];
             
-            if (friendCounter == 10) {
-                NSLog(@"retrieving 10 friends' likes");
+            if (friendCounter == 500) {
+                NSLog(@"retrieving 500 friends' likes");
                 [friendsIDs appendFormat:@"%@", [friend objectForKey:@"id"]];
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
 
                 [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
-//                friendCounter = 0;
-//                [friendsIDs setString:@""];
+                friendCounter = 0;
+                [friendsIDs setString:@""];
             } else {
                 [friendsIDs appendFormat:@"%@,", [friend objectForKey:@"id"]];
             }
         }
         
         // take care of last group of friends
-//        if ([friendsIDs length] > 0) {
-//            // if last character is a comma, remove it
-//            if ([[friendsIDs substringFromIndex:[friendsIDs length] - 1] isEqualToString:@","]) {
-//                [friendsIDs setString:[friendsIDs substringToIndex:[friendsIDs length] -1]];
-//            }
-//        }
-//        
-//        NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
-//        [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
+        if ([friendsIDs length] > 0) {
+            // if last character is a comma, remove it
+            if ([[friendsIDs substringFromIndex:[friendsIDs length] - 1] isEqualToString:@","]) {
+                [friendsIDs setString:[friendsIDs substringToIndex:[friendsIDs length] -1]];
+            }
+        }
+        
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
+//        //  NSLog(@"%@", friendsIDs);
+        [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
         
         //        NSLog(@"friends: %@", self.myFriends);
     } else if ([requestType isEqualToString:@"myFriendsLikesRequest"]) {
         NSLog(@"did load friends likes request");
-//        NSSet *myMusicLikes = [self.myLikes objectForKey:@"Music"];
-//        NSSet *myMoviesAndTvLikes = [self.myLikes objectForKey:@"MoviesAndTv"];
-//        NSSet *myBooksLikes = [self.myLikes objectForKey:@"Books"];
+        
+        /*
+        NSLog(@"%@", [[result objectAtIndex:1] objectForKey:@"fql_result_set"]);
+        NSArray *friendsLikes = [[result objectAtIndex:1] objectForKey:@"fql_result_set"];
+        NSMutableString *currentID = [[NSMutableString alloc] initWithString:@""];
+        NSMutableString *previousID = [[NSMutableString alloc] initWithString:@""];
+        RFriend *currentFriend;
+        for (NSDictionary *friendLike in friendsLikes) {
+            [currentID setString:[[friendLike objectForKey:@"uid"] stringValue]];
+            if (![currentID isEqualToString:previousID]) {
+                if (currentFriend) {
+                    [self.myFriendsAndScores addObject:currentFriend];
+                    currentFriend.compatScore = (currentFriend.sameLikes*2) / (float)(currentFriend.totalLikes + [self.myLikes count]);
+//                    NSLog(@"%@: %i, %i, %f", currentFriend.name, currentFriend.sameLikes, currentFriend.totalLikes, currentFriend.compatScore);
+                }
+                currentFriend = [[RFriend alloc] init];
+                currentFriend.name = [self.myFriends objectForKey:currentID];
+                currentFriend.compatScore = 0.0f;
+                currentFriend.totalLikes = 0;
+                currentFriend.sameLikes = 0;
+            }
+            
+            currentFriend.totalLikes++;
+            if ([self.myLikes containsObject:[friendLike objectForKey:@"page_id"]]) {
+                // same like!
+                currentFriend.sameLikes++;
+            }
+            
+            [previousID setString:currentID];
+        }
+         
+         */
         
         for (NSString* friendID in [result allKeys]) {
             RFriend *currentFriend = [[RFriend alloc] init];
@@ -179,7 +211,7 @@
             return (first < second);
         }];
         
-        NSLog(@"%@", sortedArray);
+//        NSLog(@"%@", sortedArray);
         
 //        NSLog(@"%@", result);
     }
@@ -206,7 +238,20 @@
     NSLog(@"reconnect view controller did appear");
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
+    
     [facebook requestWithGraphPath:@"me/likes" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
+//    NSString *myLikesURL = @"fql?q=SELECT page_id FROM page WHERE page_id IN (SELECT page_id FROM page_fan WHERE type in ('MUSICIAN/BAND', 'MOVIE', 'TV SHOW', 'TV CHANNEL', 'TV NETWORK', 'BOOK') and uid =me())";
+//    NSString *myLikesRequest = [myLikesURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+//    [facebook requestWithGraphPath:myLikesRequest andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
+    
+    [facebook requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
+    
+//    NSString *myFriends = @"SELECT uid2 from friend where uid1 = me()";
+//    NSString *myFriendsPages = @"SELECT uid, page_id FROM page_fan WHERE type in ('MUSICIAN/BAND', 'MOVIE', 'TV SHOW', 'TV CHANNEL', 'TV NETWORK', 'BOOK') and uid in (select uid2 from #myFriendsQuery) order by uid";
+//    NSString *fqlStatement = [NSString stringWithFormat:@"{\"myFriendsQuery\":\"%@\",\"myFriendsPagesQuery\":\"%@\"}",myFriends,myFriendsPages];
+//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:fqlStatement, @"queries", @"myFriendsLikesRequest", @"requestType", nil];
+//    [facebook requestWithMethodName:@"fql.multiquery" andParams:params andHttpMethod:@"POST" andDelegate:self];
+    
 }
 
 - (void)viewDidLoad

@@ -10,6 +10,7 @@
 
 @interface RFriend : NSObject
 
+@property (nonatomic, strong) NSString *friendID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableSet *commonLikes;
 @property float compatScore;

@@ -10,6 +10,7 @@
 
 @implementation RFriend
 
+@synthesize friendID = _friendID;
 @synthesize name = _name;
 @synthesize commonLikes = _commonLikes;
 @synthesize compatScore = _compatScore;
