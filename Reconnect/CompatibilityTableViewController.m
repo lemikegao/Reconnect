@@ -90,6 +90,14 @@
     return _pageIdToName;
 }
 
+- (NSMutableDictionary*)topFbPics {
+    if (!_topFbPics) {
+        _topFbPics = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _topFbPics;
+}
+
 #pragma mark - FBRequestDelegate Methods
 
 - (void)request:(FBRequest *)request didLoad:(id)result { 
@@ -138,6 +146,7 @@
                 [friendsIDs setString:@""];
             } else {
                 [friendsIDs appendFormat:@"%@,", [friend objectForKey:@"id"]];
+
             }
         }
         
@@ -146,6 +155,7 @@
             // if last character is a comma, remove it
             if ([[friendsIDs substringFromIndex:[friendsIDs length] - 1] isEqualToString:@","]) {
                 [friendsIDs setString:[friendsIDs substringToIndex:[friendsIDs length] -1]];
+                self.doneProcessing = YES;
             }
         }
         
@@ -314,9 +324,10 @@
     if (self.doneProcessing) {
         RFriend *friend = [self.mySortedFriendsAndScores objectAtIndex:indexPath.row];
         
-        NSString* friendFBID = friend.friendID;
-        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
-        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+//        NSString* friendFBID = friend.friendID;
+//        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
+//        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+        UIImage *profilePic = [[UIImage alloc] initWithData:[self.topFbPics objectForKey:friend.friendID]];
 
         cell.imageView.image = profilePic;
         cell.imageView.layer.cornerRadius = 8.0;
