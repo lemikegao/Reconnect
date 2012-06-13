@@ -38,5 +38,14 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb159351717531143</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
