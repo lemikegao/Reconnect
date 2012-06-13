@@ -105,6 +105,9 @@
                 [self.myLikes addObject:[myLike objectForKey:@"id"]];
             }
         }
+        
+//        NSLog(@"%@", self.myLikes);
+        
     } else if ([requestType isEqualToString:@"myFriendsRequest"]) {
         // loop through all results and store in myFriends dictionary
         NSArray *data = [result objectForKey:@"data"];
