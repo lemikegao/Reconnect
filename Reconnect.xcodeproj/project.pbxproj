@@ -97,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				3EB5FC45158790D7001B70E7 /* Reconnect */,
-				F90E49921587BA0B003C4D29 /* Resources */,
 				F90E497F15879E7E003C4D29 /* Views */,
 				3EB5FC3E158790D7001B70E7 /* Frameworks */,
 				3EB5FC3C158790D7001B70E7 /* Products */,
@@ -193,13 +192,6 @@
 				F90E498215879E9E003C4D29 /* CompatibilityCell.m */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		F90E49921587BA0B003C4D29 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

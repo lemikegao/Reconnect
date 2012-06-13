@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
-#import "LoginViewController.h"
 
 @interface ReconnectTabBarController : UITabBarController <FBSessionDelegate>
 

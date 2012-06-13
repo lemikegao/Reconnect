@@ -14,20 +14,12 @@
 
 @interface CompatibilityTableViewController ()
 
-@property (nonatomic, strong) FBRequest *meRequest;
-@property (nonatomic, strong) FBRequest *myLikesRequest;
-@property (nonatomic, strong) FBRequest *friendsLikesRequest;
-@property (nonatomic, strong) FBRequest *myFriendsRequest;
 @property (nonatomic, strong) NSMutableDictionary *myFriends;
 
 @end
 
 @implementation CompatibilityTableViewController
 
-@synthesize meRequest = _meRequest;
-@synthesize myLikesRequest = _myLikesRequest;
-@synthesize friendsLikesRequest = _friendsLikesRequest;
-@synthesize myFriendsRequest = _myFriendsRequest;
 @synthesize myFriends = _myFriends;
 
 #pragma mark - Getters & Setters
@@ -63,8 +55,8 @@
                 NSLog(@"retrieving 100 friends' likes");
                 [friendsIDs appendFormat:@"%@", [friend objectForKey:@"id"]];
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
-                //                NSLog(@"%@", friendsIDs);
-                self.friendsLikesRequest = [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
+
+                [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
                 friendCounter = 0;
                 [friendsIDs setString:@""];
             } else {
@@ -82,12 +74,12 @@
         
         NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:friendsIDs, @"ids", @"myFriendsLikesRequest", @"requestType", nil];
         //  NSLog(@"%@", friendsIDs);
-        self.friendsLikesRequest = [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
+        [[(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook] requestWithGraphPath:@"likes" andParams:params andDelegate:self];
         
         //        NSLog(@"friends: %@", self.myFriends);
     } else if ([requestType isEqualToString:@"myFriendsLikesRequest"]) {
         NSLog(@"did load friends likes request");
-        //        self.friendLike.text = [NSString stringWithFormat:@"Your friend Kimberly likes %@", [[[[[result objectForKey:@"kimhsiao"] objectForKey:@"likes"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"name"]];
+
         NSLog(@"%@", result);
     }
 }
