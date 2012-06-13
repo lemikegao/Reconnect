@@ -1,56 +1,141 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VSH-Y4-Qh5">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="jN7-QN-eCL">
+        <!--Compatibility Table View Controller-->
+        <scene sceneID="mcr-Ry-uhj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Soy-w2-vmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="loginViewController" id="8vy-Rj-8st" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qnb-ke-QK1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BLT-cS-dWq">
-                                <rect key="frame" x="89" y="215" width="143" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="LoginWithFacebookNormal.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZU5-ll-3MT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="CH8-zN-LJo" customClass="CompatibilityTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VSl-dL-U73">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompatibilityCell" rowHeight="60" id="JgB-do-JVr" customClass="CompatibilityCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="My Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="q1J-ln-oMh">
+                                            <rect key="frame" x="14" y="3" width="199" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="96" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LMt-ob-Hxy">
+                                            <rect key="frame" x="256" y="0.0" width="41" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="38"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="G6z-9z-Gm5">
+                                            <rect key="frame" x="293" y="5" width="21" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vjN-9X-z2k">
+                                            <rect key="frame" x="14" y="27" width="199" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="loginWithFacebook:" destination="8vy-Rj-8st" eventType="touchUpInside" id="XI6-TP-Sru"/>
+                                    <outlet property="compatibilityPercent" destination="LMt-ob-Hxy" id="4Bh-H6-HJt"/>
+                                    <outlet property="nameLabel" destination="q1J-ln-oMh" id="Nhz-2E-0Pk"/>
+                                    <outlet property="similaritiesLabel" destination="vjN-9X-z2k" id="nqR-AX-MGI"/>
                                 </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CH8-zN-LJo" id="WbA-5w-eEC"/>
+                            <outlet property="delegate" destination="CH8-zN-LJo" id="Szb-cJ-2CM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="axW-bZ-lPp"/>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="283" y="-364"/>
+            <point key="canvasLocation" x="1638" y="159"/>
         </scene>
-        <!--Reconnect View Controller-->
-        <scene sceneID="5">
+        <!--Reconnect Navigation Controller - Find Similar Friends-->
+        <scene sceneID="xkq-UG-Xks">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <viewController id="2" customClass="ReconnectViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0iG-tF-FsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="CiA-cW-I7y" customClass="ReconnectNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Find Similar Friends" id="ccy-9X-VTy"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="6fu-CA-rLA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CH8-zN-LJo" kind="relationship" relationship="rootViewController" id="EXa-xa-nqn"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1198" y="159"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="g0D-2b-3AY">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ikv-6S-RYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Ugf-X2-Nb1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wHj-Op-k1D">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6hU-B7-DQU"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1638" y="774"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="79H-K2-9QK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CYQ-Kz-7FS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="AJZ-3I-gv4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hyq-w5-dyx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="esq-UZ-emE"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1638" y="1393"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Dfy-Gf-03W">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I4q-7R-D8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="loginViewController" id="gqC-np-VqD" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oRo-qi-mko">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H88-tX-aTP">
-                                <rect key="frame" x="247" y="0.0" width="75" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zr9-bq-fII">
+                                <rect key="frame" x="20" y="200" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Logout">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -58,64 +143,98 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutOfFacebook:" destination="2" eventType="touchUpInside" id="yjk-BJ-VaX"/>
-                                    <segue destination="8vy-Rj-8st" kind="modal" id="68k-dP-PPc"/>
+                                    <action selector="loginWithFacebook:" destination="gqC-np-VqD" eventType="touchUpInside" id="lKr-S4-wbj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hello " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f7S-wz-Adl">
-                                <rect key="frame" x="20" y="65" width="280" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="My like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QXm-Qh-cmq">
-                                <rect key="frame" x="20" y="219" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your friend's like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="1jZ-Dp-SWI">
-                                <rect key="frame" x="20" y="353" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="friendLike" destination="1jZ-Dp-SWI" id="n9O-cl-MFH"/>
-                        <outlet property="greeting" destination="f7S-wz-Adl" id="HXz-y5-6EE"/>
-                        <outlet property="myLike" destination="QXm-Qh-cmq" id="wNo-At-sse"/>
-                    </connections>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="199" y="774"/>
+        </scene>
+        <!--Reconnect Tab Bar Controller-->
+        <scene sceneID="VUc-dH-4Xr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZF-Na-izz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="VSH-Y4-Qh5" customClass="ReconnectTabBarController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FYh-uy-VcK">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CiA-cW-I7y" kind="relationship" relationship="viewControllers" id="Kvh-L8-OjG"/>
+                        <segue destination="3Pt-XL-gpr" kind="relationship" relationship="viewControllers" id="ss4-eV-vfA"/>
+                        <segue destination="NOX-fs-9Lf" kind="relationship" relationship="viewControllers" id="Ahp-WX-cl7"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="692" y="774"/>
+        </scene>
+        <!--Navigation Controller - Update Status-->
+        <scene sceneID="LwF-4w-wQ3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOj-ar-jtz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="3Pt-XL-gpr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Update Status" id="xmX-Qz-BK0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Fbv-V2-q2v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ugf-X2-Nb1" kind="relationship" relationship="rootViewController" id="gMe-K5-ql5"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1198" y="774"/>
+        </scene>
+        <!--Navigation Controller - Top Picks-->
+        <scene sceneID="fPc-Va-dkf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azt-BK-ht7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="NOX-fs-9Lf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Top Picks" id="6qO-AI-6xn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="INi-4l-WEJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AJZ-3I-gv4" kind="relationship" relationship="rootViewController" id="eOY-UY-w9A"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1198" y="1393"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="LoginWithFacebookNormal.png" width="159" height="29"/>
-    </resources>
     <classes>
+        <class className="CompatibilityCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompatibilityCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="compatibilityPercent" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="similaritiesLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CompatibilityTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompatibilityTableViewController.h"/>
+        </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="loginWithFacebook:"/>
             </relationships>
         </class>
-        <class className="ReconnectViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReconnectViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logoutOfFacebook:"/>
-                <relationship kind="outlet" name="greeting" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="myLike" candidateClass="UILabel"/>
-            </relationships>
+        <class className="ReconnectNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReconnectNavigationController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

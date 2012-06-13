@@ -17,9 +17,13 @@
 		3EB5FC4C158790D7001B70E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC4B158790D7001B70E7 /* main.m */; };
 		3EB5FC50158790D7001B70E7 /* ReconnectAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */; };
 		3EB5FC53158790D7001B70E7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */; };
-		3EB5FC56158790D7001B70E7 /* ReconnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */; };
 		3EB5FCB81587981B001B70E7 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EB5FCAB1587981B001B70E7 /* FBDialog.bundle */; };
 		3EB5FCB91587981B001B70E7 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB5FCB11587981B001B70E7 /* libfacebook_ios_sdk.a */; };
+		F90E498315879E9E003C4D29 /* CompatibilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E498215879E9E003C4D29 /* CompatibilityCell.m */; };
+		F90E49891587A12B003C4D29 /* ReconnectNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E49881587A12B003C4D29 /* ReconnectNavigationController.m */; };
+		F90E498C1587AB74003C4D29 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E498B1587AB74003C4D29 /* Constants.m */; };
+		F90E498F1587AC31003C4D29 /* CompatibilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90E498E1587AC31003C4D29 /* CompatibilityTableViewController.m */; };
+		F9C167A015882F8600FBAAFC /* ReconnectTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C1679F15882F8600FBAAFC /* ReconnectTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +42,6 @@
 		3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReconnectAppDelegate.h; sourceTree = "<group>"; };
 		3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectAppDelegate.m; sourceTree = "<group>"; };
 		3EB5FC52158790D7001B70E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReconnectViewController.h; sourceTree = "<group>"; };
-		3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReconnectViewController.m; sourceTree = "<group>"; };
 		3EB5FCA91587981B001B70E7 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		3EB5FCAA1587981B001B70E7 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		3EB5FCAB1587981B001B70E7 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -55,6 +57,16 @@
 		3EB5FCB51587981B001B70E7 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		3EB5FCB61587981B001B70E7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		3EB5FCB71587981B001B70E7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		F90E498115879E9E003C4D29 /* CompatibilityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompatibilityCell.h; path = Reconnect/CompatibilityCell.h; sourceTree = "<group>"; };
+		F90E498215879E9E003C4D29 /* CompatibilityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompatibilityCell.m; path = Reconnect/CompatibilityCell.m; sourceTree = "<group>"; };
+		F90E49871587A12B003C4D29 /* ReconnectNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconnectNavigationController.h; sourceTree = "<group>"; };
+		F90E49881587A12B003C4D29 /* ReconnectNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReconnectNavigationController.m; sourceTree = "<group>"; };
+		F90E498A1587AAE8003C4D29 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F90E498B1587AB74003C4D29 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		F90E498D1587AC31003C4D29 /* CompatibilityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompatibilityTableViewController.h; sourceTree = "<group>"; };
+		F90E498E1587AC31003C4D29 /* CompatibilityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompatibilityTableViewController.m; sourceTree = "<group>"; };
+		F9C1679E15882F8600FBAAFC /* ReconnectTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconnectTabBarController.h; sourceTree = "<group>"; };
+		F9C1679F15882F8600FBAAFC /* ReconnectTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReconnectTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				3EB5FC45158790D7001B70E7 /* Reconnect */,
+				F90E49921587BA0B003C4D29 /* Resources */,
+				F90E497F15879E7E003C4D29 /* Views */,
 				3EB5FC3E158790D7001B70E7 /* Frameworks */,
 				3EB5FC3C158790D7001B70E7 /* Products */,
 			);
@@ -114,10 +128,14 @@
 				3EB5FC51158790D7001B70E7 /* MainStoryboard.storyboard */,
 				3EB5FC4E158790D7001B70E7 /* ReconnectAppDelegate.h */,
 				3EB5FC4F158790D7001B70E7 /* ReconnectAppDelegate.m */,
+				F9C1679E15882F8600FBAAFC /* ReconnectTabBarController.h */,
+				F9C1679F15882F8600FBAAFC /* ReconnectTabBarController.m */,
+				F90E49871587A12B003C4D29 /* ReconnectNavigationController.h */,
+				F90E49881587A12B003C4D29 /* ReconnectNavigationController.m */,
+				F90E498D1587AC31003C4D29 /* CompatibilityTableViewController.h */,
+				F90E498E1587AC31003C4D29 /* CompatibilityTableViewController.m */,
 				3E5399271587A55E00355DF3 /* LoginViewController.h */,
 				3E5399281587A55E00355DF3 /* LoginViewController.m */,
-				3EB5FC54158790D7001B70E7 /* ReconnectViewController.h */,
-				3EB5FC55158790D7001B70E7 /* ReconnectViewController.m */,
 				3EB5FC46158790D7001B70E7 /* Supporting Files */,
 				3E53991E1587A06200355DF3 /* Resources */,
 				3EB5FC681587972D001B70E7 /* Libraries */,
@@ -128,9 +146,11 @@
 		3EB5FC46158790D7001B70E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F90E498A1587AAE8003C4D29 /* Constants.h */,
+				F90E498B1587AB74003C4D29 /* Constants.m */,
+				3EB5FC4B158790D7001B70E7 /* main.m */,
 				3EB5FC47158790D7001B70E7 /* Reconnect-Info.plist */,
 				3EB5FC48158790D7001B70E7 /* InfoPlist.strings */,
-				3EB5FC4B158790D7001B70E7 /* main.m */,
 				3EB5FC4D158790D7001B70E7 /* Reconnect-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -165,6 +185,22 @@
 			);
 			path = "facebook-ios-sdk";
 			sourceTree = SOURCE_ROOT;
+		};
+		F90E497F15879E7E003C4D29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F90E498115879E9E003C4D29 /* CompatibilityCell.h */,
+				F90E498215879E9E003C4D29 /* CompatibilityCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F90E49921587BA0B003C4D29 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -235,8 +271,12 @@
 			files = (
 				3EB5FC4C158790D7001B70E7 /* main.m in Sources */,
 				3EB5FC50158790D7001B70E7 /* ReconnectAppDelegate.m in Sources */,
-				3EB5FC56158790D7001B70E7 /* ReconnectViewController.m in Sources */,
+				F90E498315879E9E003C4D29 /* CompatibilityCell.m in Sources */,
+				F90E49891587A12B003C4D29 /* ReconnectNavigationController.m in Sources */,
+				F90E498C1587AB74003C4D29 /* Constants.m in Sources */,
+				F90E498F1587AC31003C4D29 /* CompatibilityTableViewController.m in Sources */,
 				3E5399291587A55F00355DF3 /* LoginViewController.m in Sources */,
+				F9C167A015882F8600FBAAFC /* ReconnectTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

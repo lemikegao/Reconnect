@@ -7,8 +7,8 @@
 //
 
 #import "ReconnectAppDelegate.h"
-#import "ReconnectViewController.h"
 #import "LoginViewController.h"
+#import "ReconnectTabBarController.h"
 
 @implementation ReconnectAppDelegate
 
@@ -19,7 +19,7 @@ NSString* const FB_APP_ID = @"159351717531143";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    ReconnectViewController *rootViewController = (ReconnectViewController *)self.window.rootViewController;
+    ReconnectTabBarController *rootViewController = (ReconnectTabBarController *)self.window.rootViewController;
     self.facebook = [[Facebook alloc] initWithAppId:FB_APP_ID andDelegate:rootViewController];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
