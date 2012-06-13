@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSMutableDictionary *pageIdToName;
 @property BOOL doneProcessing;
 @property float highestCompatScore;
+@property (nonatomic, strong) NSMutableDictionary *topFbPics;
 
 @end
 
@@ -37,6 +38,7 @@
 @synthesize pageIdToName = _pageIdToName;
 @synthesize doneProcessing = _doneProcessing;
 @synthesize highestCompatScore = _highestCompatScore;
+@synthesize topFbPics = _topFbPics;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -235,6 +237,21 @@
         self.doneProcessing = YES;
         self.highestCompatScore = [[sortedArray objectAtIndex:0] compatScore];
         self.mySortedFriendsAndScores = sortedArray;
+        
+        if (self.doneProcessing) {
+            int topFriendCounter = 0;
+            for (RFriend* topFriend in self.mySortedFriendsAndScores) {
+                if (topFriendCounter < 10) {
+                    // add picture to toppics
+                    NSLog(@"top friedn FBID is :%@",topFriend.friendID);
+                    [self.topFbPics setObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",topFriend.friendID]]] forKey:topFriend.friendID];
+                    topFriendCounter++;
+                }
+            }
+            NSLog(@"top friend pics is %@",self.topFbPics);
+            [self.tableView reloadData];
+        }
+        
         NSLog(@"%@", sortedArray);
 //        NSLog(@"%@", result);
     }
