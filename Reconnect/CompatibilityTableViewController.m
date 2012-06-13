@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *myFriendsAndScores;
 @property (nonatomic, strong) NSArray *mySortedFriendsAndScores;
 @property (nonatomic, strong) NSMutableDictionary *pageIdToName;
+@property BOOL doneProcessing;
 
 @end
 
@@ -32,6 +33,7 @@
 @synthesize myFriendsAndScores = _myFriendsAndScores;
 @synthesize mySortedFriendsAndScores = _mySortedFriendsAndScores;
 @synthesize pageIdToName = _pageIdToName;
+@synthesize doneProcessing = _doneProcessing;
 
 #pragma mark - Getters & Setters
 - (NSMutableDictionary*)myFriends {
@@ -103,11 +105,6 @@
                 [self.myLikes addObject:[myLike objectForKey:@"id"]];
             }
         }
-        
-        NSLog(@"%@", self.pageIdToName);
-        
-//        NSLog(@"%@", self.myLikes);
-        
     } else if ([requestType isEqualToString:@"myFriendsRequest"]) {
         // loop through all results and store in myFriends dictionary
         NSArray *data = [result objectForKey:@"data"];
@@ -182,6 +179,7 @@
         
         for (NSString* friendID in [result allKeys]) {
             RFriend *currentFriend = [[RFriend alloc] init];
+            currentFriend.friendID = friendID;
             currentFriend.name = [self.myFriends objectForKey:friendID];
             currentFriend.compatScore = 0.0f;
             currentFriend.totalLikes = 0;
@@ -195,6 +193,7 @@
                     if ([self.myLikes containsObject:[friendLike objectForKey:@"id"]]) {
                         // same like!
                         currentFriend.sameLikes++;
+                        [currentFriend.commonLikes addObject:[friendLike objectForKey:@"id"]];
                     }
                 }
             }
@@ -211,9 +210,11 @@
             return (first < second);
         }];
         
-//        NSLog(@"%@", sortedArray);
-        
-//        NSLog(@"%@", result);
+        self.mySortedFriendsAndScores = sortedArray;
+        self.doneProcessing = YES;
+        [self.tableView reloadData];
+        NSLog(@"%@", sortedArray);
+        NSLog(@"%@", result);
     }
 }
 
@@ -239,22 +240,18 @@
     Facebook *facebook = [(ReconnectAppDelegate *)[[UIApplication sharedApplication] delegate] facebook];
     [facebook requestWithGraphPath:@"me" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"meRequest", @"requestType", nil] andDelegate:self];
     
-    // get my likes
-    NSString *myLikes = @"SELECT page_id, name, type FROM page WHERE page_id IN (SELECT page_id FROM page_fan WHERE type in ('MUSICIAN/BAND','MOVIE','TV SHOW','TV CHANNEL','TV NETWORK','BOOK') and uid =me())";
-    NSMutableDictionary *myLikesParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:myLikes,@"query",@"myLikesRequest",@"requestType",nil];
-    [facebook requestWithMethodName:@"fql.query" andParams:myLikesParams andHttpMethod:@"POST" andDelegate:self];
+    [facebook requestWithGraphPath:@"me/likes" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
+//    NSString *myLikesURL = @"fql?q=SELECT page_id FROM page WHERE page_id IN (SELECT page_id FROM page_fan WHERE type in ('MUSICIAN/BAND', 'MOVIE', 'TV SHOW', 'TV CHANNEL', 'TV NETWORK', 'BOOK') and uid =me())";
+//    NSString *myLikesRequest = [myLikesURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+//    [facebook requestWithGraphPath:myLikesRequest andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myLikesRequest", @"requestType", nil] andDelegate:self];
     
-    // get pageIDs of my friends likes
-    NSString *myFriends = @"SELECT uid2 from friend where uid1 = me()";
-    NSString *myFriendsPages = @"SELECT uid, page_id, type FROM page_fan WHERE type in ('MUSICIAN/BAND','MOVIE','TV SHOW','TV CHANNEL','TV NETWORK','BOOK') and uid in (select uid2 from #myFriendsQuery)";
-    NSString *fqlStatement = [NSString stringWithFormat:@"{\"myFriendsQuery\":\"%@\",\"myFriendsPagesQuery\":\"%@\"}",myFriends,myFriendsPages];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:fqlStatement forKey:@"queries"];
-    [facebook requestWithMethodName:@"fql.multiquery" andParams:params andHttpMethod:@"POST" andDelegate:self];
+    [facebook requestWithGraphPath:@"me/friends" andParams:[[NSMutableDictionary alloc] initWithObjectsAndKeys:@"myFriendsRequest", @"requestType", nil] andDelegate:self];
     
-    // get names of common likes -- get first 3
-    NSString *commonLikesNames = @"SELECT name FROM page where page_id in ('10705539669','93944052260','6483988719','10510685798')";
-    NSMutableDictionary *commonLikesNamesParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:commonLikesNames, @"query",@"commonLikesNamesRequest",@"requestType", nil];
-    [facebook requestWithMethodName:@"fql.query" andParams:commonLikesNamesParams andHttpMethod:@"POST" andDelegate:self];
+//    NSString *myFriends = @"SELECT uid2 from friend where uid1 = me()";
+//    NSString *myFriendsPages = @"SELECT uid, page_id FROM page_fan WHERE type in ('MUSICIAN/BAND', 'MOVIE', 'TV SHOW', 'TV CHANNEL', 'TV NETWORK', 'BOOK') and uid in (select uid2 from #myFriendsQuery) order by uid";
+//    NSString *fqlStatement = [NSString stringWithFormat:@"{\"myFriendsQuery\":\"%@\",\"myFriendsPagesQuery\":\"%@\"}",myFriends,myFriendsPages];
+//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:fqlStatement, @"queries", @"myFriendsLikesRequest", @"requestType", nil];
+//    [facebook requestWithMethodName:@"fql.multiquery" andParams:params andHttpMethod:@"POST" andDelegate:self];
     
 }
 
@@ -298,14 +295,33 @@
     static NSString *CellIdentifier = @"CompatibilityCell";
     CompatibilityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString* profilePicURL = @"http://graph.facebook.com/kimhsiao/picture";
-    UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
+    if (self.doneProcessing) {
+        RFriend *friend = [self.mySortedFriendsAndScores objectAtIndex:indexPath.row];
+        
+        NSString* friendFBID = friend.friendID;
+        NSString* profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",friendFBID];
+        UIImage *profilePic = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicURL]]];
 
-    cell.imageView.image = profilePic;
-    cell.imageView.layer.cornerRadius = 8.0;
-    cell.imageView.layer.masksToBounds = YES;
-    cell.nameLabel.text = @"Kimberly Hsiao";
-    cell.similaritiesLabel.text = @"hiasdfasdfasdfaf, MOULIN ROUGE, GOOD WILL HUNTING, ZOOLANDER, HIMYM, FRIENDS";
+        cell.imageView.image = profilePic;
+        cell.imageView.layer.cornerRadius = 8.0;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.nameLabel.text = friend.name;
+        
+        NSString* commonLikes = @"";
+        int likeCounter = 0;
+        for (NSString* pageID in friend.commonLikes) {
+            if (likeCounter < 5) {
+                NSString* likeName = [self.pageIdToName objectForKey:pageID];
+                commonLikes = [NSString stringWithFormat:@"%@, %@",commonLikes,likeName];
+                likeCounter++;
+            }
+        }
+        commonLikes = [commonLikes substringWithRange:NSMakeRange(2,[commonLikes length]-2)];
+        cell.similaritiesLabel.text = commonLikes;
+        
+        cell.compatibilityPercent.text = [NSString stringWithFormat:@"%.f", friend.compatScore*100];
+        cell.percentSign.text = @"%";
+    }
     
     return cell;
 }
